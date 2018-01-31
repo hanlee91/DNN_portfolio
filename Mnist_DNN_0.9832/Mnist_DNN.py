@@ -34,21 +34,21 @@ class Model:
             L1 = tf.nn.relu(tf.matmul(self.X, W1) + b1)
             
         with tf.name_scope("layer2"):
-            W2 = Model.init_var([512, 256], "W2")
-            b2 = Model.init_var([256], "b2")
+            W2 = Model.init_var([512, 512], "W2")
+            b2 = Model.init_var([512], "b2")
             tf.summary.histogram("W2_Values", W2)
             tf.summary.histogram("B2_Values", b2)
             L2 = tf.nn.relu(tf.matmul(L1, W2) + b2)
             
         with tf.name_scope("layer3"):
-            W3 = Model.init_var([256, 128], "W3")
-            b3 = Model.init_var([128], "b3")
+            W3 = Model.init_var([512, 512], "W3")
+            b3 = Model.init_var([512], "b3")
             tf.summary.histogram("W3_Values", W3)
             tf.summary.histogram("B3_Values", b3)
             L3 = tf.nn.relu(tf.matmul(L2, W3) + b3)
             
         with tf.name_scope("layer4"):
-            W4 = Model.init_var([128, 10], "W4")
+            W4 = Model.init_var([512, 10], "W4")
             b4 = Model.init_var([10], "b4")
             tf.summary.histogram("W4_Values", W4)
             tf.summary.histogram("B4_Values", b4)
